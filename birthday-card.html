@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Selamat Ulang Tahun 🎉</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Poppins',sans-serif;
+            overflow-x:hidden;
+            background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+            min-height:100vh;
+            position:relative;
+        }
+
+        img{
+            max-width:100%;
+            display:block;
+        }
+
+        /* Background */
+        body::before{
+            content:'';
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120,219,255,0.2) 0%, transparent 50%);
+            animation:floatBg 20s ease-in-out infinite;
+            z-index:-1;
+        }
+
+        @keyframes floatBg{
+            0%,100%{
+                transform:translateY(0px) rotate(0deg);
+            }
+            50%{
+                transform:translateY(-20px) rotate(1deg);
+            }
+        }
+
+        /* Landing */
+        .landing{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            text-align:center;
+            padding:20px;
+        }
+
+        .gift-container{
+            margin-bottom:40px;
+        }
+
+        /* Kucing */
+        .gift{
+            width:min(80vw, 500px);
+            cursor:pointer;
+            animation:bounce 2s infinite;
+            transition:transform 0.3s ease;
+        }
+
+        .gift:hover{
+            transform:scale(1.05);
+        }
+
+        .cat-img{
+            width:100%;
+            height:auto;
+            filter:drop-shadow(0 15px 25px rgba(0,0,0,0.25));
+        }
+
+        @keyframes bounce{
+            0%,100%{
+                transform:translateY(0);
+            }
+            50%{
+                transform:translateY(-20px);
+            }
+        }
+
+        .btn-try{
+            background:linear-gradient(45deg,#ff6b9d,#ff8e8e);
+            color:white;
+            border:none;
+            padding:20px 40px;
+            font-size:24px;
+            font-weight:600;
+            border-radius:50px;
+            cursor:pointer;
+            box-shadow:0 15px 30px rgba(255,107,157,0.4);
+            transition:all 0.3s ease;
+            text-transform:uppercase;
+            letter-spacing:2px;
+        }
+
+        .btn-try:hover{
+            transform:translateY(-5px);
+            box-shadow:0 20px 40px rgba(255,107,157,0.6);
+        }
+
+        /* Main */
+        .main-page{
+            display:none;
+            min-height:100vh;
+            padding:120px 20px 40px;
+            text-align:center;
+        }
+
+        .back-btn{
+            position:fixed;
+            top:20px;
+            left:20px;
+            background:rgba(255,255,255,0.2);
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius:25px;
+            cursor:pointer;
+            font-size:14px;
+            backdrop-filter:blur(10px);
+            transition:0.3s;
+            z-index:1000;
+        }
+
+        .back-btn:hover{
+            background:rgba(255,255,255,0.3);
+            transform:translateX(-5px);
+        }
+
+        .birthday-card{
+            width:100%;
+            max-width:650px;
+            margin:0 auto;
+            background:rgba(255,255,255,0.95);
+            backdrop-filter:blur(20px);
+            border-radius:30px;
+            padding:60px 40px;
+            box-shadow:0 30px 60px rgba(0,0,0,0.2);
+            animation:slideUp 1s ease-out;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .birthday-card::before{
+            content:'';
+            position:absolute;
+            top:-50%;
+            left:-50%;
+            width:200%;
+            height:200%;
+            background:conic-gradient(
+                transparent,
+                rgba(255,107,157,0.1),
+                transparent 30%
+            );
+            animation:rotate 20s linear infinite;
+        }
+
+        @keyframes slideUp{
+            from{
+                opacity:0;
+                transform:translateY(50px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        @keyframes rotate{
+            100%{
+                transform:rotate(360deg);
+            }
+        }
+
+        .cake{
+            font-size:80px;
+            margin:30px 0;
+            animation:bounce 2s infinite;
+        }
+
+        .title{
+            font-size:clamp(2.5rem,6vw,4rem);
+            background:linear-gradient(
+                45deg,
+                #ff6b9d,
+                #4ecdc4,
+                #45b7d1,
+                #96ceb4
+            );
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            background-clip:text;
+            margin-bottom:20px;
+            font-weight:700;
+            position:relative;
+            z-index:2;
+        }
+
+        .message{
+            font-size:clamp(1.1rem,3vw,1.5rem);
+            color:#333;
+            line-height:1.8;
+            margin-bottom:30px;
+            font-weight:300;
+            position:relative;
+            z-index:2;
+        }
+
+        .sparkles{
+            font-size:3rem;
+            animation:sparkle 1.5s infinite;
+            position:relative;
+            z-index:2;
+        }
+
+        @keyframes sparkle{
+            0%,100%{
+                transform:scale(1);
+                opacity:1;
+            }
+            50%{
+                transform:scale(1.2);
+                opacity:0.7;
+            }
+        }
+
+        /* Particle */
+        .particles{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            pointer-events:none;
+            z-index:999;
+        }
+
+        .particle{
+            position:absolute;
+            width:8px;
+            height:8px;
+            border-radius:50%;
+            animation:floatUp 6s infinite linear;
+        }
+
+        @keyframes floatUp{
+            0%{
+                transform:translateY(100vh) scale(0);
+                opacity:1;
+            }
+            100%{
+                transform:translateY(-100px) scale(1);
+                opacity:0;
+            }
+        }
+
+        /* Loading */
+        .loading{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            z-index:2000;
+            transition:opacity 0.5s ease;
+        }
+
+        .loading.hidden{
+            opacity:0;
+            pointer-events:none;
+        }
+
+        /* Tablet & Mobile */
+        @media(max-width:768px){
+
+            .landing{
+                padding:20px 15px;
+            }
+
+            .gift{
+                width:260px;
+            }
+
+            .btn-try{
+                padding:14px 28px;
+                font-size:18px;
+                border-radius:40px;
+            }
+
+            .main-page{
+                padding:100px 15px 30px;
+            }
+
+            .birthday-card{
+                padding:35px 20px;
+                border-radius:24px;
+            }
+
+            .cake{
+                font-size:60px;
+            }
+
+            .message{
+                font-size:1rem;
+                line-height:1.8;
+            }
+
+            .back-btn{
+                top:15px;
+                left:15px;
+                font-size:13px;
+                padding:8px 16px;
+            }
+
+        }
+
+        /* Small Mobile */
+        @media(max-width:480px){
+
+            .gift{
+                width:220px;
+            }
+
+            .title{
+                font-size:2rem;
+            }
+
+            .btn-try{
+                width:100%;
+                max-width:280px;
+                font-size:16px;
+            }
+
+            .birthday-card{
+                padding:30px 18px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- AUTOPLAY MUSIC -->
+    <audio id="birthdayMusic" autoplay loop>
+        <source src="birthday-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Loading -->
+    <div class="loading" id="loading">
+        <div class="gift" style="animation-duration:1s;">
+            <img src="kucing.png" alt="Cute Cat" class="cat-img">
+        </div>
+    </div>
+
+    <!-- Landing -->
+    <section class="landing" id="landing">
+
+        <div class="gift-container">
+            <div class="gift" onclick="goToMain()">
+                <img src="kucing.png" alt="Cute Cat" class="cat-img">
+            </div>
+        </div>
+
+        <button class="btn-try" onclick="goToMain()">
+            Birthday Card 🎁
+        </button>
+
+    </section>
+
+    <!-- Main -->
+    <section class="main-page" id="mainPage">
+
+        <button class="back-btn" onclick="goBack()">
+            ← Kembali
+        </button>
+
+        <div class="particles" id="particles"></div>
+
+        <div class="birthday-card">
+
+            <div class="sparkles">✨</div>
+
+            <h1 class="title">
+                OTANJOUBI OMEDETOU!!
+            </h1>
+
+            <div class="cake">🎂🎉</div>
+
+            <p class="message">
+                Selamat ulang tahun yaa kak Nina Dovi Nintias 
+                (aku bisa bacanya kann hahaha). 
+                panjang umur yaa kak, sehat selalu, 
+                rezekinya lancar, cepet dapet jodoh 
+                (semoga aku jodohnya, hahaha). 🥳
+
+                <br><br>
+
+                Tetap menjadi versi terbaik dari dirimu yaa kakk dan
+                semoga di lembaran terbaru ini, 
+                semua impian kakak tercapai amin.🎈
+            </p>
+
+            <div style="font-size:1.2rem;color:#666;margin-top:30px;position:relative;z-index:2;">
+                🎁 Hadiah terbaik ada di hatimu! 🐾✨
+            </div>
+
+        </div>
+
+    </section>
+
+    <script>
+
+        const audio = document.getElementById('birthdayMusic');
+
+        // Force autoplay
+        window.addEventListener('load', () => {
+
+            audio.play().catch(() => {
+
+                document.addEventListener('click', () => {
+                    audio.play();
+                }, { once:true });
+
+            });
+
+            setTimeout(() => {
+
+                document.getElementById('loading')
+                    .classList.add('hidden');
+
+            }, 2000);
+
+        });
+
+        function goToMain(){
+
+            document.getElementById('landing')
+                .style.display = 'none';
+
+            document.getElementById('mainPage')
+                .style.display = 'block';
+
+            createParticles();
+
+        }
+
+        function goBack(){
+
+            document.getElementById('mainPage')
+                .style.display = 'none';
+
+            document.getElementById('landing')
+                .style.display = 'flex';
+
+        }
+
+        function createParticles(){
+
+            const particlesContainer =
+                document.getElementById('particles');
+
+            for(let i = 0; i < 50; i++){
+
+                setTimeout(() => {
+
+                    const particle =
+                        document.createElement('div');
+
+                    particle.className = 'particle';
+
+                    particle.style.left =
+                        Math.random() * 100 + '%';
+
+                    particle.style.animationDelay =
+                        Math.random() * 6 + 's';
+
+                    particle.style.animationDuration =
+                        (Math.random() * 3 + 4) + 's';
+
+                    particle.style.background =
+                        `hsl(${Math.random() * 60 + 300}, 70%, 60%)`;
+
+                    particlesContainer.appendChild(particle);
+
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 7000);
+
+                }, i * 100);
+
+            }
+
+        }
+
+        setInterval(createParticles, 8000);
+
+    </script>
+
+</body>
+</html>
